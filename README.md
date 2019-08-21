@@ -39,7 +39,7 @@ La aplicación debe ser un Single Page Application.
 
 La aplicación debe hacer uso de npm-scripts y contar con scripts start, test, build y deploy, que se encarguen de arrancar, correr las pruebas, empaquetar y desplegar la aplicación respectivamente.
 
-Los tests unitarios deben cubrir un mínimo del 70% de statements, functions, lines y branches.
+Implementar test unitarios incluyendo el porcentaje de coverage.
 
 ## Hacker Edition
 
