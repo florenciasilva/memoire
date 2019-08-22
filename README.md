@@ -1,10 +1,12 @@
 # Note Taking App
 
-## Preambulo
+## Preámbulo
 
-Siempre nos encontramos tomando notas. Ya sea un número celular, un recordatorio o simplemente algo para investigar luego. Muchas de estas veces, estas notas terminan en libretas olvidadas, en algun mensaje de texto o hasta en escrito en la palma de nuestra mano.
+No existe día que no tomemos notas, siempre necesitamos apuntar alguna dirección, número telefónico, algunos notas de alguna reunión, o hasta guardar nuestras URLs favoritas para  poder consultarlas más tarde. Muchas veces para esta actividad utilizamos libretas o agendas que terminan siendo olvidadas, se guardan en algún mensaje de texto o hasta terminando siendo  escritas en la palma de nuestra mano.
 
-Por ello te pedimos crear una Web App que nos permita guardar estas notas de manera rápida y sencilla, pudiendo accesarlas cuando querramos y eliminarlas o editarlas cuando sea necesario.
+Hoy en día la mayoría de la población cuenta con algún dispositivo mobile o laptop y además todos hoy en día nos estamos preocupando por implementar acciones para salvar el medio ambiente, por ello a una Laboratorian se le ocurre la idea de implementar una  web app para tomar notas, que nos permita crearlas, editarlas, eliminarlas y consultarlas en cualquier momento. 
+
+Ella esta enamorada de la idea y quiere llevarla acabo, pero no tiene el tiempo necesario para empezar el proyecto ya que planea que sea un proyecto independiente a su trabajo, Por ello esta buscando ayuda dentro de la comunidad de Laboratoria para que implementen la idea, por lo cual te pedimos que la ayudes.
 
 ## Resumen del Proyecto
 
