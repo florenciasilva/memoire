@@ -60,3 +60,6 @@ Una vez que hayas terminado las funcionalidades base del proyecto, puedes pasart
 * [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
 * [npm-scripts](https://docs.npmjs.com/misc/scripts)
 * [deploy con gh-pages](https://medium.com/the-andela-way/how-to-deploy-your-react-application-to-github-pages-in-less-than-5-minutes-8c5f665a2d2a)
+* [Tu primera Progressive Web App - Google developers](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/?hl=es)
+* [Usando Service Workers - MDN](https://developer.mozilla.org/es/docs/Web/API/Service_Worker_API/Using_Service_Workers)
+* [What is a Single Page Application](https://medium.com/@NeotericEU/single-page-application-vs-multiple-page-application-2591588efe58)
