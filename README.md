@@ -1,4 +1,4 @@
-# Note Taking App
+# <L> Notes
 
 ## Índice
 
@@ -16,7 +16,7 @@
 
 No existe día que no tomemos notas, siempre necesitamos apuntar alguna dirección, número telefónico, algunos notas de alguna reunión, o hasta guardar nuestras URLs favoritas para  poder consultarlas más tarde. Muchas veces para esta actividad utilizamos libretas o agendas que terminan siendo olvidadas, se guardan en algún mensaje de texto o hasta terminando siendo escritas en la palma de nuestra mano.
 
-Hoy en día la mayoría de la población cuenta con algún dispositivo mobile o laptop y además todos hoy en día nos estamos preocupando por implementar acciones para salvar el medio ambiente, por ello a una Laboratorian se le ocurre la idea de implementar una  web app para tomar notas, que nos permita crearlas, editarlas, eliminarlas y consultarlas en cualquier momento.
+Hoy en día la mayoría de la población cuenta con algún dispositivo mobile o laptop y además todos nos estamos preocupando por implementar acciones para salvar el medio ambiente, por ello a una Laboratorian se le ocurre la idea de implementar una  web app para tomar notas, que nos permita crearlas, editarlas, eliminarlas y consultarlas en cualquier momento.
 
 Ella esta enamorada de la idea y quiere llevarla acabo, pero no tiene el tiempo necesario para empezar el proyecto ya que planea que sea un proyecto independiente a su trabajo, Por ello esta buscando dentro de la comunidad de Laboratoria para que implementen la idea, por lo cual te pedimos que la ayudes.
 
@@ -26,8 +26,7 @@ Ella esta enamorada de la idea y quiere llevarla acabo, pero no tiene el tiempo 
 Para este proyecto necesitas crear una Web App con `React`, `Firebase` y `react-router`.
 
 Si bien la temática es libre, tendrá que tener ciertas funcionalidades básicas:
-* Puedo registrarme con mi correo, cuenta de Google y/o Facebook.
-* Puedo hacer log in usando mi cuenta de Google y/o Facebook y/o  correo.
+* Puedo autenticarme con Correo y/o Google y/o Facebook.
 * Puedo cerrar sesión.
 * Puedo crear una nueva entrada/post
 * Puedo ver mis entradas/posts
