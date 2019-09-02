@@ -59,6 +59,7 @@ Implementar test unitarios incluyendo el porcentaje de coverage.
 
 Una vez que hayas terminado las funcionalidades base del proyecto, puedes pasarte a esta sección.
 
+* Si la usuaria empieza a escribir una nota y por alguna razón la pestaña del navegador se cierra, cuando vuelva a abrir esta, la nota debería mostrarse como estaba.
 * Puedo ver el número de veces que he editado mi entradas/posts
 * Puedo subir imágenes
 * Consumo de API/s (Google Maps, Spotify, Pinterest, etc)
