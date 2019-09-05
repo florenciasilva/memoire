@@ -14,7 +14,7 @@
 ![Shows CRUD functionalities](./demo-crud.gif)
 
 
-No existe día que no tomemos notas, siempre necesitamos apuntar alguna dirección, número telefónico, algunos notas de alguna reunión, o hasta guardar nuestras URLs favoritas para  poder consultarlas más tarde. Muchas veces para esta actividad utilizamos libretas o agendas que terminan siendo olvidadas, se guardan en algún mensaje de texto o hasta terminando siendo escritas en la palma de nuestra mano.
+No existe día que no tomemos notas, siempre necesitamos apuntar alguna dirección, número telefónico, algunos notas de alguna reunión, o hasta guardar nuestras URLs favoritas para  poder consultarlas más tarde. Muchas veces para esta actividad utilizamos libretas o agendas que terminan siendo olvidadas, se guardan en algún mensaje de texto o hasta terminan siendo escritas en la palma de nuestra mano.
 
 Hoy en día la mayoría de la población cuenta con algún dispositivo mobile o laptop y además todos nos estamos preocupando por implementar acciones para salvar el medio ambiente, por ello a una Laboratorian se le ocurre la idea de implementar una  web app para tomar notas, que nos permita crearlas, editarlas, eliminarlas y consultarlas en cualquier momento.
 
