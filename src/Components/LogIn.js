@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Firebase from './firebase';
-import styled from 'styled-components';
+import { Section, Form, Input, Submit} from './style';
 import { withRouter } from 'react-router-dom'
 import Main from './Main';
 
@@ -37,39 +37,12 @@ class LogIn extends Component {
                         <Input id="email" type="email" name="email" required onChange={(e) => this.handleChange(e)} />
                         <label htmlFor="password">Write your password here</label>
                         <Input id="password" type="password" name="password" required onChange={(e) => this.handleChange(e)} />
-                        <button onClick={this.handleSubmit}>Log In</button>
+                        <Submit onClick={this.handleSubmit}>Log In</Submit>
                     </Form>
                 </Section>
                 );
         };
     }
-
-const Section = styled.section`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-`
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-
-`
-
-const Input = styled.input`
-    margin: 1rem 0 1rem 0;
-    padding: .4rem;
-    border: none;
-    border-bottom: .1rem solid #27e6be;
-    border-radius: 7px;
-
-     :focus {
-         outline: none;
-        border: .2rem solid #27e6be;
-        border-radius: 7px;
-    }
-`
 
 
 

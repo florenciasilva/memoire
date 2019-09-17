@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import firebase from 'firebase';
-import styled from 'styled-components';
-
+import { SecondaryBtn, PostContainer, Submit, GrayBtn, Post, Date, Text, EndToEnd, Author } from './style';
+import moment from 'moment';
+import '../App.css';
 class AllPosts extends Component{
     constructor(){
         super();
@@ -12,7 +13,8 @@ class AllPosts extends Component{
             currentEdit: -1,
             editText: '',
             tabIndex: '-1',
-            favorite: false
+            favorite: false,
+            star: 'far fa-start',
         };
     };
 
@@ -60,7 +62,7 @@ class AllPosts extends Component{
         this.setState({ currentEdit: -1})
         return db.collection('posts').doc(id).update({
             post: this.state.editText,
-            lastEdit: new Date().toString(),
+            //lastEdit: new Date().toString(),
         })
         .then(function() {
             console.log("Document successfully updated!");
@@ -96,24 +98,34 @@ class AllPosts extends Component{
         } else {
             return this.state.msg.map((post, i) => {
                 return (
-                    <article key={i}>
-                        <p>{post.data().author}</p>
-                        <button onClick={() => this.handleFavorite(post.id)}></button>
-                        <p  style={{display: (i === this.state.currentEdit) ? "none" : "block"}} >{post.data().post}</p>
-                        <div style={{display: (i === this.state.currentEdit) ? "block" : "none"}} hidden={this.state.hidden} id="edit-section" role="region" tabIndex={this.state.tabIndex}>
+                    <PostContainer id="fade" key={i}>
+                        <EndToEnd>
+                                <Author >{post.data().author}</Author>
+                                <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-start"}></i></span>
+                        </EndToEnd>
+                        <Text className="transcript" style={{display: (i === this.state.currentEdit) ? "none" : "block"}} >{post.data().post}</Text>
+                        <div style={{display: (i === this.state.currentEdit) ? "block" : "none"}}
+                            hidden={this.state.hidden}
+                            id="edit-section"
+                            role="region"
+                            tabIndex={this.state.tabIndex}>
                             <label htmlFor="edit">Editar post</label>
-                            <input
+                            <textarea
                                 ref={input => input && input.focus()}
-                                type="text"
                                 id="edit"
                                 value={this.state.editText}
                                 onChange={ e => this.editStage(e)} />
-                            <button onClick={e => this.handleSubmit(e, post.id)}>Editar</button>
+                            <Submit onClick={e => this.handleSubmit(e, post.id)}>Editar</Submit>
                         </div>
-                        <p>{post.data().date}</p>
-                        <button onClick={() => this.handleDelete(post.id)}>Borrar</button>
-                        <button aria-controls="t1" aria-expanded="false" onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</button>
-                    </article>
+                        <Date>{moment(post.data().date).startOf('seconds').fromNow()}</Date>
+                        <Post>
+                            <GrayBtn onClick={() => this.handleDelete(post.id)}>Borrar</GrayBtn>
+                            <SecondaryBtn
+                                aria-controls="t1"
+                                aria-expanded="false"
+                                onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</SecondaryBtn>
+                        </Post>
+                    </PostContainer>
                 );
             });
         };

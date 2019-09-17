@@ -1,16 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import LogOutBtn from './LogOutBtn';
-
+import { Header, Logo } from './style';
 
 const Navbar = () => (
-    <header>
+    <Header>
         <nav>
-            <Link to="/">Log In</Link>
-            <Link to="/register">Register</Link>
+            <Logo className="far fa-sticky-note"></Logo>
             <LogOutBtn />
         </nav>
-    </header>
+    </Header>
 );
 
 export default Navbar;

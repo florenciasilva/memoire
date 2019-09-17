@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Firebase from './firebase';
-import styled from 'styled-components';
+import { Input, Section, Form } from './style';
 import { withRouter } from 'react-router-dom'
+
 
 class Register extends Component {
     constructor(){
@@ -40,32 +41,6 @@ class Register extends Component {
     };
 };
 
-const Section = styled.section`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-`
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-
-`
-
-const Input = styled.input`
-    margin: 1rem 0 1rem 0;
-    padding: .4rem;
-    border: none;
-    border-bottom: .1rem solid #27e6be;
-    border-radius: 7px;
-
-     :focus {
-         outline: none;
-        border: .2rem solid #27e6be;
-        border-radius: 7px;
-    }
-`
 
 
 export default withRouter(Register);

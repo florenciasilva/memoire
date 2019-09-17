@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import firebase from 'firebase';
-import styled from 'styled-components';
-
+import { TextArea, Submit, Container } from './style';
 
 class CreatePost extends Component{
     constructor(){
@@ -24,17 +23,21 @@ class CreatePost extends Component{
             lastEdit: null,
             favorite: false
         })
-        .then(res => console.log('res'))
+        .then(() => {
+            const container = document.getElementById('fade');
+            container.classList.toggle('fade-in');
+        })
         .catch(err => console.error(err))
+
     };
 
     render() {
         return (
-            <section>
-                <textarea name="msg" onChange={e => this.handleChange(e)}>
-                </textarea>
-                <button onClick={this.handleSubmit}>Send</button>
-            </section>
+            <Container>
+                <TextArea name="msg" onChange={e => this.handleChange(e)}>
+                </TextArea>
+                <Submit onClick={this.handleSubmit}>Send</Submit>
+            </Container>
         )
     }
 }
