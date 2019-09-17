@@ -11,7 +11,8 @@ class AllPosts extends Component{
             hidden: true,
             currentEdit: -1,
             editText: '',
-            tabIndex: '-1'
+            tabIndex: '-1',
+            favorite: false
         };
     };
 
@@ -59,7 +60,21 @@ class AllPosts extends Component{
         this.setState({ currentEdit: -1})
         return db.collection('posts').doc(id).update({
             post: this.state.editText,
-            lastEdit: new Date().toString()
+            lastEdit: new Date().toString(),
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+        })
+        .catch(function(error) {
+            console.error("Error updating document: ", error);
+        });
+    }
+
+    handleFavorite = (id) => {
+        const db = firebase.firestore();
+        this.setState({ favorite: !this.state.favorite})
+        db.collection('posts').doc(id).update({
+            favorite: this.state.favorite
         })
         .then(function() {
             console.log("Document successfully updated!");
@@ -83,6 +98,7 @@ class AllPosts extends Component{
                 return (
                     <article key={i}>
                         <p>{post.data().author}</p>
+                        <button onClick={() => this.handleFavorite(post.id)}></button>
                         <p  style={{display: (i === this.state.currentEdit) ? "none" : "block"}} >{post.data().post}</p>
                         <div style={{display: (i === this.state.currentEdit) ? "block" : "none"}} hidden={this.state.hidden} id="edit-section" role="region" tabIndex={this.state.tabIndex}>
                             <label htmlFor="edit">Editar post</label>
