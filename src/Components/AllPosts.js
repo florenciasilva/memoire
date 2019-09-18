@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import { SecondaryBtn, PostContainer, Submit, GrayBtn, Post, Date, Text, EndToEnd, Author } from './style';
 import moment from 'moment';
 import '../App.css';
+
 class AllPosts extends Component{
     constructor(){
         super();
@@ -98,21 +99,22 @@ class AllPosts extends Component{
         } else {
             return this.state.msg.map((post, i) => {
                 return (
-                    <PostContainer id="fade" key={i}>
+                    <PostContainer className="fade" key={i}>
                         <EndToEnd>
-                                <Author >{post.data().author}</Author>
-                                <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-start"}></i></span>
+                            <Author >{post.data().author}</Author>
+                            <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-start"}></i></span>
                         </EndToEnd>
-                        <Text className="transcript" style={{display: (i === this.state.currentEdit) ? "none" : "block"}} >{post.data().post}</Text>
+                        <Text
+                            tabIndex="0"
+                            style={{display: (i === this.state.currentEdit) ? "none" : "block"}} >{post.data().post}</Text>
                         <div style={{display: (i === this.state.currentEdit) ? "block" : "none"}}
                             hidden={this.state.hidden}
-                            id="edit-section"
                             role="region"
                             tabIndex={this.state.tabIndex}>
-                            <label htmlFor="edit">Editar post</label>
+                            <label htmlFor={`edit${i}`}>Editar post</label>
                             <textarea
                                 ref={input => input && input.focus()}
-                                id="edit"
+                                id={`edit${i}`}
                                 value={this.state.editText}
                                 onChange={ e => this.editStage(e)} />
                             <Submit onClick={e => this.handleSubmit(e, post.id)}>Editar</Submit>

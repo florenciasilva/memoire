@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Firebase from './firebase';
 import { Section, Form, Input, Submit} from './style';
 import { withRouter } from 'react-router-dom'
-import Main from './Main';
 
 class LogIn extends Component {
     constructor(){

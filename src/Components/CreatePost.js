@@ -24,7 +24,7 @@ class CreatePost extends Component{
             favorite: false
         })
         .then(() => {
-            const container = document.getElementById('fade');
+            const container = document.querySelector('.fade');
             container.classList.toggle('fade-in');
         })
         .catch(err => console.error(err))
@@ -34,7 +34,8 @@ class CreatePost extends Component{
     render() {
         return (
             <Container>
-                <TextArea name="msg" onChange={e => this.handleChange(e)}>
+                <label htmlFor="msg">Write your note here</label>
+                <TextArea id="msg" name="msg" onChange={e => this.handleChange(e)}>
                 </TextArea>
                 <Submit onClick={this.handleSubmit}>Send</Submit>
             </Container>

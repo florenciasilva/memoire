@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const Heading = styled.h1`
+    align-self: center;
+    font-size: 2rem;
+    text-transform: lowercase;
+    letter-spacing: .2rem;
+
+`
+
 export const Section = styled.section`
     display: flex;
     justify-content: center;
@@ -35,7 +43,6 @@ export const TextArea = styled.textarea`
     padding: .4rem;
     border: .1rem solid #27e6be;
     border-radius: 7px;
-
     :focus {
         outline: none;
         border: .2rem solid #27e6be;
@@ -49,8 +56,10 @@ export const Submit = styled.button`
     border: .1rem solid #27e6be;
     border-radius: 7px;
     background-color: #27e6be;
-    color: white;
+    font-size: 1.1rem;
+    color: black;
 `
+
 
 export const Container = styled.section`
     display: flex;
@@ -64,25 +73,26 @@ export const SecondaryBtn = styled.button`
     border: .1rem solid #27e6be;
     border-radius: 7px;
     background-color: white;
-    color: #27e6be;
+    color: black;
     margin: 0 .2rem .3rem .2rem;
     font-size: .8rem;
     :hover {
         background-color: #27e6be;
-        color: white;
+        color: black;
+        font-weight: bold;
     }
 `
 
 export const GrayBtn = styled.button`
     padding: .6rem;
-    border: .1rem solid lightgray;
+    border: .1rem solid darkslategray;
     border-radius: 7px;
     background-color: white;
-    color: gray;
+    color: darkslategray;
     margin: 0 .2rem .3rem .2rem;
     font-size: .8rem;
     :hover {
-        color: red;
+        color: black;
         border: .1rem solid red;
     }
 `
@@ -101,11 +111,11 @@ export const PostContainer = styled(Container)`
     border: .1rem solid lightgray;
     border-radius: 7px;
     width: 15rem;
-    height: 10rem;
+    height: 12rem;
     margin: 1rem;
 `
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.section`
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -145,8 +155,10 @@ export const Text = styled.p`
     font-size: 1rem;
     word-wrap: break-word;
     max-width: 13rem;
-    overflow: auto;
-    max-height: 10vh;
+    overflow-y: auto;
+    height: 10rem;
+    max-height: 12rem;
+    scroll-behavior: smooth;
 `
 
 export const Author = styled.span`
