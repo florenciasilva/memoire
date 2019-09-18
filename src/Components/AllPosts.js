@@ -16,6 +16,7 @@ class AllPosts extends Component{
             tabIndex: '-1',
             favorite: false,
             star: 'far fa-start',
+            currentUser: '',
         };
     };
 
@@ -40,8 +41,9 @@ class AllPosts extends Component{
             querySnapshot.forEach((doc) => {
                 allPosts.push(doc);
                 this.setState({
+                    currentUser: firebase.auth().currentUser,
                     isLoading: false,
-                    msg: allPosts
+                    msg: allPosts,
                 });
             });
         });
@@ -63,7 +65,6 @@ class AllPosts extends Component{
         this.setState({ currentEdit: -1})
         return db.collection('posts').doc(id).update({
             post: this.state.editText,
-            //lastEdit: new Date().toString(),
         })
         .then(function() {
             console.log("Document successfully updated!");
@@ -92,12 +93,13 @@ class AllPosts extends Component{
     };
 
     render(){
-        if(this.state.isLoading) {
+        if(this.state.isLoading || this.state.currentUser.email === undefined) {
             return (
                 <p>cargando</p>
             )
-        } else {
+        } else if (firebase.auth().currentUser.email === this.state.currentUser.email ) {
             return this.state.msg.map((post, i) => {
+                if(post.data().author === this.state.currentUser.email) {
                 return (
                     <PostContainer className="fade" key={i}>
                         <EndToEnd>
@@ -128,7 +130,8 @@ class AllPosts extends Component{
                                 onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</SecondaryBtn>
                         </Post>
                     </PostContainer>
-                );
+                    );
+                };
             });
         };
     };
