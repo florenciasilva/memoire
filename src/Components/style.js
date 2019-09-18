@@ -58,6 +58,9 @@ export const Submit = styled.button`
     background-color: #27e6be;
     font-size: 1.1rem;
     color: black;
+    :hover {
+        color: white;
+    }
 `
 
 
@@ -151,12 +154,13 @@ export const Date = styled.p`
     font-size: .8rem;
 `
 export const Text = styled.p`
-    margin: 0;
+    margin-top: 1rem;
     font-size: 1rem;
     word-wrap: break-word;
     max-width: 13rem;
     overflow-y: auto;
-    height: 10rem;
+    align-self: center;
+    height: 8rem;
     max-height: 12rem;
     scroll-behavior: smooth;
 `
@@ -175,5 +179,22 @@ export const EndToEnd = styled.div`
     & .left {
         align-self: flex-end
     }
+`
+
+export const Register = styled(Link)`
+    font-size: .9rem;
+    text-decoration: none;
+    margin-bottom: .7rem;
+    :hover {
+        color: #27e6be;
+    }
+`
+
+export const EditBlock = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -.5rem;
 `
 

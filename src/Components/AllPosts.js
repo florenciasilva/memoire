@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { SecondaryBtn, PostContainer, Submit, GrayBtn, Post, Date, Text, EndToEnd, Author } from './style';
+import { SecondaryBtn, PostContainer, Submit, GrayBtn, Post, Date, Text, EndToEnd, Author, EditBlock } from './style';
 import moment from 'moment';
 import '../App.css';
 
@@ -25,14 +25,6 @@ class AllPosts extends Component{
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleDelete = (id) => {
-        const db = firebase.firestore();
-        db.collection("posts").doc(id).delete().then(function() {
-            console.log("Document successfully deleted!");
-        }).catch(function(error) {
-            console.error("Error removing document: ", error);
-        });
-    }
 
     getPosts = () => {
         const db = firebase.firestore();
@@ -48,6 +40,15 @@ class AllPosts extends Component{
             });
         });
     };
+
+    handleDelete = (id) => {
+        const db = firebase.firestore();
+        db.collection("posts").doc(id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+    }
 
     handleEdit = (e, i, post) => {
         e.target['aria-expanded'] = true;
@@ -100,42 +101,47 @@ class AllPosts extends Component{
         } else if (firebase.auth().currentUser.email === this.state.currentUser.email ) {
             return this.state.msg.map((post, i) => {
                 if(post.data().author === this.state.currentUser.email) {
-                return (
-                    <PostContainer className="fade" key={i}>
-                        <EndToEnd>
-                            <Author >{post.data().author}</Author>
-                            <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-start"}></i></span>
-                        </EndToEnd>
-                        <Text
-                            tabIndex="0"
-                            style={{display: (i === this.state.currentEdit) ? "none" : "block"}} >{post.data().post}</Text>
-                        <div style={{display: (i === this.state.currentEdit) ? "block" : "none"}}
-                            hidden={this.state.hidden}
-                            role="region"
-                            tabIndex={this.state.tabIndex}>
-                            <label htmlFor={`edit${i}`}>Editar post</label>
-                            <textarea
-                                ref={input => input && input.focus()}
-                                id={`edit${i}`}
-                                value={this.state.editText}
-                                onChange={ e => this.editStage(e)} />
-                            <Submit onClick={e => this.handleSubmit(e, post.id)}>Editar</Submit>
-                        </div>
-                        <Date>{moment(post.data().date).startOf('seconds').fromNow()}</Date>
-                        <Post>
-                            <GrayBtn onClick={() => this.handleDelete(post.id)}>Borrar</GrayBtn>
-                            <SecondaryBtn
-                                aria-controls="t1"
-                                aria-expanded="false"
-                                onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</SecondaryBtn>
-                        </Post>
+                    return (
+                        <PostContainer className="fade" key={i}>
+                            <EndToEnd>
+                                <Author >{post.data().author}</Author>
+                                <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-start"}></i></span>
+                            </EndToEnd>
+                            <Text
+                                tabIndex="0"
+                                style={{display: (i === this.state.currentEdit) ? "none" : "flex"}}>
+                                {post.data().post}
+                            </Text>
+                                <EditBlock style={{display: (i === this.state.currentEdit) ? "flex" : "none"}}
+                                    hidden={this.state.hidden}
+                                    role="region"
+                                    tabIndex={this.state.tabIndex}>
+                                <label htmlFor={`edit${i}`}>Editar post</label>
+                                <textarea
+                                    ref={input => input && input.focus()}
+                                    id={`edit${i}`}
+                                    value={this.state.editText}
+                                    onChange={ e => this.editStage(e)} />
+                                    <Post>
+                                        <GrayBtn onClick={e => this.setState({ currentEdit: -1})}>Cancelar</GrayBtn>
+                                        <SecondaryBtn onClick={e => this.handleSubmit(e, post.id)}>Editar</SecondaryBtn>
+                                </Post>
+                            </EditBlock>
+                            <Date>{moment(post.data().date).startOf('seconds').fromNow()}</Date>
+                            <Post>
+                                <GrayBtn onClick={() => this.handleDelete(post.id)}>Borrar</GrayBtn>
+                                <SecondaryBtn
+                                    aria-controls="t1"
+                                    aria-expanded="false"
+                                    onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</SecondaryBtn>
+                            </Post>
                     </PostContainer>
-                    );
-                };
-            });
+                        );
+                    };
+                });
+            };
         };
     };
-};
 
 
 export default AllPosts;

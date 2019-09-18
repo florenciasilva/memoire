@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Firebase from './firebase';
-import { Input, Section, Form } from './style';
+import { Input, Section, Form, Submit, Heading, Register } from './style';
 import { withRouter } from 'react-router-dom'
 
 
-class Register extends Component {
+class RegisterUser extends Component {
     constructor(){
         super();
         this.state = {
@@ -20,27 +20,31 @@ class Register extends Component {
      handleSubmit = (e) => {
         e.preventDefault(e);
         Firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(res => this.props.history.push('/notes'))
-        .catch(err => console.log(err))
+            .auth()
+            .createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then(res => this.props.history.push('/notes'))
+            .catch(err => console.log(err))
     };
 
     render() {
     return (
-        <Section>
-            <Form method="post">
-                <label htmlFor="email">Write your email here</label>
-                <Input id="email" type="email" name="email" required onChange={(e) => this.handleChange(e)} />
-                <label htmlFor="password">Write your password here</label>
-                <Input id="password" type="password" name="password" required onChange={(e) => this.handleChange(e)} />
-                <button onClick={this.handleSubmit}>Log In</button>
-            </Form>
-        </Section>
+        <main>
+            <Heading>Register</Heading>
+            <Section>
+                <Form method="post">
+                    <label htmlFor="email">Write your email here</label>
+                    <Input id="email" type="email" name="email" required onChange={(e) => this.handleChange(e)} />
+                    <label htmlFor="password">Write your password here</label>
+                    <Input id="password" type="password" name="password" required onChange={(e) => this.handleChange(e)} />
+                    <Register to="/">Already have an account? Log in here</Register>
+                    <Submit onClick={this.handleSubmit}>Register</Submit>
+                </Form>
+            </Section>
+        </main>
         );
     };
 };
 
 
 
-export default withRouter(Register);
+export default withRouter(RegisterUser);
