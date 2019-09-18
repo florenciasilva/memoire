@@ -15,8 +15,8 @@ class AllPosts extends Component {
             currentEdit: -1,
             editText: '',
             tabIndex: '-1',
-            favorite: false,
             currentUser: '',
+            favorite: false
         };
     };
 
@@ -78,9 +78,9 @@ class AllPosts extends Component {
         });
     }
 
-    handleFavorite = (id) => {
+     handleFavorite = (id) => {
+        this.setState({favorite: !this.state.favorite})
         const db = firebase.firestore();
-        this.setState({ favorite: !this.state.favorite})
         db.collection('posts').doc(id).update({
             favorite: this.state.favorite
         })
@@ -108,7 +108,7 @@ class AllPosts extends Component {
                         <PostContainer className="fade" key={i}>
                             <EndToEnd>
                                 <Author >{post.data().author}</Author>
-                                <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-start"}></i></span>
+                                <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-star"}></i></span>
                             </EndToEnd>
                             <Text
                                 tabIndex="0"
