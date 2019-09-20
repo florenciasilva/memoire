@@ -17,3 +17,9 @@ main {
   justify-content: center;
   flex-direction: column;
 }
+
+.styled-focus:focus {
+    outline: none;
+   border: .2rem solid #27e6be;
+   border-radius: 7px;
+}

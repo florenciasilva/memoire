@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { SecondaryBtn, PostContainer, GrayBtn, Post, Date, Text, EndToEnd, Author } from './style';
+import { SecondaryBtn, PostContainer, GrayBtn, Post, Date, Text, EndToEnd, Favorite } from './style';
 import Edit from './EditPost';
 import moment from 'moment';
 import '../App.css';
@@ -107,10 +107,10 @@ class AllPosts extends Component {
                     return (
                         <PostContainer className="fade" key={i}>
                             <EndToEnd>
-                                <Author >{post.data().author}</Author>
-                                <span onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-star"}></i></span>
+                                <Favorite aria-label={post.data().favorite ? "Unstar" : "Star"} tabIndex="0" className="styled-focus" onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-star"}></i></Favorite>
                             </EndToEnd>
                             <Text
+                                className="styled-focus"
                                 tabIndex="0"
                                 style={{display: (i === this.state.currentEdit) ? "none" : "flex"}}>
                                 {post.data().post}
@@ -118,8 +118,9 @@ class AllPosts extends Component {
                             <Edit i={i} editStage={this.editStage} state={this.state} id={post.id} handleSubmit={this.handleSubmit} handleCancel={this.handleCancel}/>
                             <Date>{moment(post.data().date).startOf('seconds').fromNow()}</Date>
                             <Post>
-                                <GrayBtn onClick={() => this.handleDelete(post.id)}>Borrar</GrayBtn>
+                                <GrayBtn className="styled-focus" onClick={() => this.handleDelete(post.id)}>Borrar</GrayBtn>
                                 <SecondaryBtn
+                                    className="styled-focus"
                                     aria-controls="t1"
                                     aria-expanded="false"
                                     onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</SecondaryBtn>

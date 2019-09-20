@@ -29,15 +29,15 @@ class RegisterUser extends Component {
     render() {
     return (
         <main>
-            <Heading>Register</Heading>
+            <Heading>Register to Lab Notes</Heading>
             <Section>
                 <Form method="post">
                     <label htmlFor="email">Write your email here</label>
-                    <Input id="email" type="email" name="email" required onChange={(e) => this.handleChange(e)} />
+                    <Input className="styled-focus" id="email" type="email" name="email" required onChange={this.handleChange} />
                     <label htmlFor="password">Write your password here</label>
-                    <Input id="password" type="password" name="password" required onChange={(e) => this.handleChange(e)} />
-                    <Register to="/">Already have an account? Log in here</Register>
-                    <Submit onClick={this.handleSubmit}>Register</Submit>
+                    <Input className="styled-focus" id="password" type="password" name="password" required onChange={this.handleChange} />
+                    <Register className="styled-focus" to="/">Already have an account? Log in here</Register>
+                    <Submit className="styled-focus" onClick={this.handleSubmit}>Register</Submit>
                 </Form>
             </Section>
         </main>

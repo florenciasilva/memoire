@@ -8,13 +8,14 @@ const Edit = (props) => (
             tabIndex={props.state.tabIndex}>
         <label htmlFor={`edit${props.i}`}>Editar post</label>
         <textarea
+            className="styled-focus"
             ref={input => input && input.focus()}
             id={`edit${props.i}`}
             value={props.state.editText}
-            onChange={e => props.editStage(e)} />
+            onChange={props.editStage} />
         <Post>
-            <GrayBtn onClick={e => props.handleCancel()}>Cancelar</GrayBtn>
-            <SecondaryBtn onClick={e => props.handleSubmit(e, props.id)}>Editar</SecondaryBtn>
+            <GrayBtn className="styled-focus" onClick={props.handleCancel}>Cancelar</GrayBtn>
+            <SecondaryBtn className="styled-focus" onClick={e => props.handleSubmit(e, props.id)}>Editar</SecondaryBtn>
         </Post>
     </EditBlock>
 )

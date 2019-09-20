@@ -5,6 +5,8 @@ export const Heading = styled.h1`
     align-self: center;
     font-size: 2rem;
     text-transform: lowercase;
+    margin-top: 5rem;
+    margin-bottom: -5rem;
     letter-spacing: .2rem;
 
 `
@@ -28,12 +30,6 @@ export const Input = styled.input`
     border: none;
     border-bottom: .1rem solid #27e6be;
     border-radius: 7px;
-
-     :focus {
-         outline: none;
-        border: .2rem solid #27e6be;
-        border-radius: 7px;
-    }
 `
 
 export const TextArea = styled.textarea`
@@ -165,9 +161,9 @@ export const Text = styled.p`
     scroll-behavior: smooth;
 `
 
-export const Author = styled.span`
-    align-self: flex-start;
-    font-size: .8rem;
+export const Favorite = styled.button`
+    background-color: white;
+    border: 0;
 `
 
 export const EndToEnd = styled.div`

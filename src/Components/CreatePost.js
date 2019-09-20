@@ -35,9 +35,9 @@ class CreatePost extends Component{
         return (
             <Container>
                 <label htmlFor="msg">Write your note here</label>
-                <TextArea id="msg" name="msg" onChange={e => this.handleChange(e)}>
+                <TextArea className="styled-focus" id="msg" name="msg" onChange={e => this.handleChange(e)}>
                 </TextArea>
-                <Submit onClick={this.handleSubmit}>Send</Submit>
+                <Submit className="styled-focus" onClick={this.handleSubmit}>Send</Submit>
             </Container>
         )
     }
