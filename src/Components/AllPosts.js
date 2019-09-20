@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { SecondaryBtn, PostContainer, GrayBtn, Post, Date, Text, EndToEnd, Favorite } from './style';
+import { SecondaryBtn, PostContainer, GrayBtn, ButtonsContainer, Date, Text, EndToEnd, Favorite, RowContainer } from './style';
 import Edit from './EditPost';
 import moment from 'moment';
+import Swal from 'sweetalert2'
 import '../App.css';
 
 class AllPosts extends Component {
@@ -41,13 +42,30 @@ class AllPosts extends Component {
     };
 
     handleDelete = (id) => {
-        const db = firebase.firestore();
-        db.collection("posts").doc(id).delete().then(function() {
-            console.log("Document successfully deleted!");
-        }).catch(function(error) {
-            console.error("Error removing document: ", error);
-        });
-    }
+        Swal.fire({
+            title: 'Are you sure you want to delete this note?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#27e6be',
+            cancelButtonColor: 'red',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+                const db = firebase.firestore();
+                db.collection("posts").doc(id).delete()
+                .then(function() {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your note has been deleted.',
+                        'success'
+                      )
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+            }
+          })
+}
 
     handleEdit = (e, i, post) => {
         e.target['aria-expanded'] = true;
@@ -99,7 +117,7 @@ class AllPosts extends Component {
     render(){
         if(this.state.isLoading || this.state.currentUser.email === undefined) {
             return (
-                <p>cargando</p>
+                <p aria-live="polite">Loading</p>
             )
         } else if (firebase.auth().currentUser.email === this.state.currentUser.email ) {
             return this.state.msg.map((post, i) => {
@@ -107,24 +125,35 @@ class AllPosts extends Component {
                     return (
                         <PostContainer className="fade" key={i}>
                             <EndToEnd>
-                                <Favorite aria-label={post.data().favorite ? "Unstar" : "Star"} tabIndex="0" className="styled-focus" onClick={() => this.handleFavorite(post.id)}><i className={post.data().favorite ? "fas fa-star" : "far fa-star"}></i></Favorite>
+                                <Favorite
+                                    ref={input => input && input.focus()}
+                                    aria-label={post.data().favorite ? "Unstar" : "Starred"}
+                                    tabIndex="0"
+                                    className="styled-focus"
+                                    onClick={() => this.handleFavorite(post.id)}>
+                                        <i className={post.data().favorite ? "fas fa-star" : "far fa-star"}></i>
+                                </Favorite>
                             </EndToEnd>
-                            <Text
-                                className="styled-focus"
-                                tabIndex="0"
-                                style={{display: (i === this.state.currentEdit) ? "none" : "flex"}}>
-                                {post.data().post}
-                            </Text>
+                            <RowContainer>
+                                <Text
+                                    className="styled-focus"
+                                    tabIndex="0"
+                                    aria-label={"This note says" + post.data().post + "and was made" + moment(post.data().date).startOf('seconds').fromNow()}
+                                    ref={p => p && p.focus()}
+                                    style={{display: (i === this.state.currentEdit) ? "none" : "flex"}}>
+                                    {post.data().post}
+                                </Text>
+                            </RowContainer>
                             <Edit i={i} editStage={this.editStage} state={this.state} id={post.id} handleSubmit={this.handleSubmit} handleCancel={this.handleCancel}/>
                             <Date>{moment(post.data().date).startOf('seconds').fromNow()}</Date>
-                            <Post>
-                                <GrayBtn className="styled-focus" onClick={() => this.handleDelete(post.id)}>Borrar</GrayBtn>
+                            <RowContainer>
+                                <GrayBtn onClick={() => this.handleDelete(post.id)}>Delete</GrayBtn>
                                 <SecondaryBtn
                                     className="styled-focus"
                                     aria-controls="t1"
                                     aria-expanded="false"
-                                    onClick={e => this.handleEdit(e, i, post.data().post)}>Editar</SecondaryBtn>
-                            </Post>
+                                    onClick={e => this.handleEdit(e, i, post.data().post)}>Edit</SecondaryBtn>
+                            </RowContainer>
                     </PostContainer>
                         );
                     };

@@ -1,5 +1,5 @@
-import React, { Fragment, Component } from 'react';
-import firebase from 'firebase';
+import React, { Fragment } from 'react';
+import 'firebase';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './Components/LogIn';
 import Register from './Components/Register';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditBlock, Post, GrayBtn, SecondaryBtn } from './style';
+import { EditBlock, GrayBtn, SecondaryBtn, RowContainer } from './style';
 
 const Edit = (props) => (
     <EditBlock style={{display: (props.i === props.state.currentEdit) ? "flex" : "none"}}
@@ -13,10 +13,10 @@ const Edit = (props) => (
             id={`edit${props.i}`}
             value={props.state.editText}
             onChange={props.editStage} />
-        <Post>
+        <RowContainer>
             <GrayBtn className="styled-focus" onClick={props.handleCancel}>Cancelar</GrayBtn>
             <SecondaryBtn className="styled-focus" onClick={e => props.handleSubmit(e, props.id)}>Editar</SecondaryBtn>
-        </Post>
+        </RowContainer>
     </EditBlock>
 )
 

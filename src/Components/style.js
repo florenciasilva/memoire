@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Fragment } from 'react';
+
 
 export const Heading = styled.h1`
     align-self: center;
@@ -96,22 +98,22 @@ export const GrayBtn = styled.button`
     }
 `
 
-export const Post = styled.article`
-    display: flex;
+export const RowContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: row;
 `
 
-export const PostContainer = styled(Container)`
+export const PostContainer = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
     border: .1rem solid lightgray;
     border-radius: 7px;
     width: 15rem;
-    height: 12rem;
+    height: 20rem;
     margin: 1rem;
+    flex-direction: column;
 `
 
 export const Wrapper = styled.section`
@@ -150,15 +152,13 @@ export const Date = styled.p`
     font-size: .8rem;
 `
 export const Text = styled.p`
-    margin-top: 1rem;
     font-size: 1rem;
     word-wrap: break-word;
     max-width: 13rem;
+    word-break: break-all;
     overflow-y: auto;
-    align-self: center;
-    height: 8rem;
-    max-height: 12rem;
-    scroll-behavior: smooth;
+    height: 10rem;
+    max-height: 10rem;
 `
 
 export const Favorite = styled.button`
