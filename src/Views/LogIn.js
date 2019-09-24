@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Firebase from '../firebase';
-import { Section, Form, Input, Submit, Heading, Register } from './style';
+//import Firebase from '../firebase';
+import { Section, Form, Input, Submit, Heading, Register } from '../Components/style';
 import { withRouter } from 'react-router-dom'
 
 class LogIn extends Component {
@@ -18,14 +18,6 @@ class LogIn extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault(e);
-        Firebase
-            .auth()
-            .signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then(res => {
-                this.setState({isLoggedIn: !this.state.isLoggedIn});
-                this.props.history.push('/notes')
-            })
-            .catch(err => console.log(err))
     };
 
 

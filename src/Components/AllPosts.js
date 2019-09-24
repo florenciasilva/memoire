@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
 import { SecondaryBtn, PostContainer, GrayBtn, Date, Text, EndToEnd, Favorite, RowContainer } from './style';
 import Edit from './EditPost';
 import moment from 'moment';
@@ -27,18 +26,6 @@ class AllPosts extends Component {
     }
 
     getPosts = () => {
-        const db = firebase.firestore();
-        db.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-            let allPosts = [];
-            querySnapshot.forEach((doc) => {
-                allPosts.push(doc);
-                this.setState({
-                    currentUser: firebase.auth().currentUser,
-                    isLoading: false,
-                    msg: allPosts,
-                });
-            });
-        });
     };
 
     handleDelete = (id) => {
@@ -52,17 +39,11 @@ class AllPosts extends Component {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.value) {
-                const db = firebase.firestore();
-                db.collection("posts").doc(id).delete()
-                .then(function() {
                     Swal.fire(
                         'Deleted!',
                         'Your note has been deleted.',
                         'success'
                       )
-                }).catch(function(error) {
-                    console.error("Error removing document: ", error);
-                });
             }
           })
 }
@@ -83,31 +64,11 @@ class AllPosts extends Component {
     }
 
     handleSubmit = (e, id) => {
-        const db = firebase.firestore();
         this.setState({ currentEdit: -1})
-        return db.collection('posts').doc(id).update({
-            post: this.state.editText,
-        })
-        .then(function() {
-            console.log("Document successfully updated!");
-        })
-        .catch(function(error) {
-            console.error("Error updating document: ", error);
-        });
     }
 
      handleFavorite = (id) => {
         this.setState({favorite: !this.state.favorite})
-        const db = firebase.firestore();
-        db.collection('posts').doc(id).update({
-            favorite: this.state.favorite
-        })
-        .then(function() {
-            console.log("Document successfully updated!");
-        })
-        .catch(function(error) {
-            console.error("Error updating document: ", error);
-        });
     }
 
     componentDidMount() {
@@ -118,8 +79,8 @@ class AllPosts extends Component {
         if(this.state.isLoading || this.state.currentUser.email === undefined) {
             return (
                 <p aria-live="polite">Loading</p>
-            )
-        } else if (firebase.auth().currentUser.email === this.state.currentUser.email ) {
+            )/*
+        } else if (this.state.currentUser.email ) {
             return this.state.msg.map((post, i) => {
                 if(post.data().author === this.state.currentUser.email) {
                     return (
@@ -155,7 +116,7 @@ class AllPosts extends Component {
                     </PostContainer>
                         );
                     };
-                });
+                });*/
             };
         };
     };

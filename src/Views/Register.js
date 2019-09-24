@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Firebase from '../firebase';
-import { Input, Section, Form, Submit, Heading, Register } from './style';
+import { Input, Section, Form, Submit, Heading, Register } from '../Components/style';
 import { withRouter } from 'react-router-dom'
 
 
@@ -19,11 +18,6 @@ class RegisterUser extends Component {
 
      handleSubmit = (e) => {
         e.preventDefault(e);
-        Firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(res => this.props.history.push('/notes'))
-            .catch(err => console.log(err))
     };
 
     render() {

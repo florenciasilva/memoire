@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import 'firebase';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Login from './Components/LogIn';
-import Register from './Components/Register';
+import Login from './Views/LogIn';
+import Register from './Views/Register';
 import Main from './Views/Main';
 
 const App = () => (
