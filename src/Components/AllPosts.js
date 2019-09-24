@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { SecondaryBtn, PostContainer, GrayBtn, ButtonsContainer, Date, Text, EndToEnd, Favorite, RowContainer } from './style';
+import { SecondaryBtn, PostContainer, GrayBtn, Date, Text, EndToEnd, Favorite, RowContainer } from './style';
 import Edit from './EditPost';
 import moment from 'moment';
 import Swal from 'sweetalert2'
@@ -126,7 +126,6 @@ class AllPosts extends Component {
                         <PostContainer className="fade" key={i}>
                             <EndToEnd>
                                 <Favorite
-                                    ref={input => input && input.focus()}
                                     aria-label={post.data().favorite ? "Unstar" : "Starred"}
                                     tabIndex="0"
                                     className="styled-focus"
@@ -139,7 +138,6 @@ class AllPosts extends Component {
                                     className="styled-focus"
                                     tabIndex="0"
                                     aria-label={"This note says" + post.data().post + "and was made" + moment(post.data().date).startOf('seconds').fromNow()}
-                                    ref={p => p && p.focus()}
                                     style={{display: (i === this.state.currentEdit) ? "none" : "flex"}}>
                                     {post.data().post}
                                 </Text>

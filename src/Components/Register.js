@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Firebase from './firebase';
+import Firebase from '../firebase';
 import { Input, Section, Form, Submit, Heading, Register } from './style';
 import { withRouter } from 'react-router-dom'
 

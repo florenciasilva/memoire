@@ -3,7 +3,7 @@ import 'firebase';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './Components/LogIn';
 import Register from './Components/Register';
-import Main from './Components/Main';
+import Main from './Views/Main';
 
 const App = () => (
     <Fragment>

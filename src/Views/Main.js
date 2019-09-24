@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import Navbar from './Navbar';
-import CreatePost from './CreatePost';
-import AllPosts from './AllPosts';
-import { Wrapper, Heading } from './style';
+import Navbar from '../Components/Navbar';
+import CreatePost from '../Components/CreatePost';
+import AllPosts from '../Components/AllPosts';
+import { Wrapper, Heading } from '../Components/style';
 
 const Main = () => (
     <Fragment>

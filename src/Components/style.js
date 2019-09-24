@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Fragment } from 'react';
 
 
 export const Heading = styled.h1`
@@ -10,7 +9,6 @@ export const Heading = styled.h1`
     margin-top: 5rem;
     margin-bottom: -5rem;
     letter-spacing: .2rem;
-
 `
 
 export const Section = styled.section`
@@ -23,7 +21,6 @@ export const Section = styled.section`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-
 `
 
 export const Input = styled.input`
@@ -151,6 +148,7 @@ export const Date = styled.p`
     margin-right: .2rem;
     font-size: .8rem;
 `
+
 export const Text = styled.p`
     font-size: 1rem;
     word-wrap: break-word;
@@ -193,4 +191,3 @@ export const EditBlock = styled.div`
     flex-direction: column;
     margin-top: -.5rem;
 `
-

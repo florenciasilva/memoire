@@ -34,7 +34,7 @@ class CreatePost extends Component{
     render() {
         return (
             <Container>
-                <label htmlFor="msg">Write your note here</label>
+                <label htmlFor="msg">Write your note here {firebase.auth().currentUser.email}</label>
                 <TextArea className="styled-focus" id="msg" name="msg" onChange={e => this.handleChange(e)}>
                 </TextArea>
                 <Submit className="styled-focus" onClick={this.handleSubmit}>Submit</Submit>
