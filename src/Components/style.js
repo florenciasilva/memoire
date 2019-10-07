@@ -126,6 +126,11 @@ export const Links = styled(Link)`
     color: black;
 `
 
+export const ErrorMessage = styled.p`
+    color: red;
+
+`
+
 export const Header = styled.header`
     & nav {
     display: flex;

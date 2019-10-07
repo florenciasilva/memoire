@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Firebase from '../firebase';
-import { Section, Form, Input, Submit, Heading, Register } from './style';
+import { Section, Form, Input, Submit, Heading, Register, ErrorMessage } from '../Components/style';
 import { withRouter } from 'react-router-dom'
 
 class LogIn extends Component {
@@ -9,6 +9,8 @@ class LogIn extends Component {
         this.state = {
             email: '',
             password: '',
+            error: null,
+            errorMsg: ''
         };
     };
 
@@ -25,7 +27,10 @@ class LogIn extends Component {
                 this.setState({isLoggedIn: !this.state.isLoggedIn});
                 this.props.history.push('/notes')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err.message)
+                this.setState({errorMsg: err.message, error: true})
+            });
     };
 
 
@@ -39,6 +44,7 @@ class LogIn extends Component {
                             <Input className="styled-focus" id="email" type="email" name="email" required onChange={this.handleChange} />
                             <label htmlFor="password">Write your password here</label>
                             <Input className="styled-focus" id="password" type="password" name="password" required onChange={this.handleChange} />
+                            <ErrorMessage style={{display: this.state.error ? 'block' : 'none' }}>{this.state.errorMsg}</ErrorMessage>
                             <Register className="styled-focus" to="/register">Don't have an account yet? Register here</Register>
                             <Submit className="styled-focus" onClick={this.handleSubmit}>Log In</Submit>
                         </Form>
