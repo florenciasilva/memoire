@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Firebase from '../firebase';
-import { Input, Section, Form, Submit, Heading, Register, ErrorMessage } from '../Components/style';
+import { Input, Section, Form, Submit, Heading, Subtitle, Register, ErrorMessage } from '../Components/style';
 import { withRouter } from 'react-router-dom'
 
 
@@ -34,7 +34,8 @@ class RegisterUser extends Component {
     render() {
         return (
             <main>
-                <Heading>Register to Lab Notes</Heading>
+                <Heading>Register to Memoire</Heading>
+                <Subtitle>A private space only for you</Subtitle>
                 <Section>
                     <Form method="post">
                         <label htmlFor="email">Write your email here</label>
@@ -50,7 +51,5 @@ class RegisterUser extends Component {
         );
     };
 };
-
-
 
 export default withRouter(RegisterUser);

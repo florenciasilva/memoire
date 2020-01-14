@@ -11,6 +11,14 @@ export const Heading = styled.h1`
     letter-spacing: .2rem;
 `
 
+export const Subtitle = styled.p`
+    align-self: center;
+    font-size: 1.2rem;
+    margin-top: 5rem;
+    letter-spacing: .2rem;
+    margin-bottom: -5rem;
+`
+
 export const Section = styled.section`
     display: flex;
     justify-content: center;
@@ -128,7 +136,9 @@ export const Links = styled(Link)`
 
 export const ErrorMessage = styled.p`
     color: red;
-
+    word-break: break;
+    max-width: 15em;
+    text-align: center;
 `
 
 export const Header = styled.header`
